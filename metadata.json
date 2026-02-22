@@ -1,0 +1,7 @@
+{
+  "name": "WAX ADVERTISING AGENCY",
+  "description": "A high-end SEO and AI-powered advertising agency offering premium digital marketing solutions.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

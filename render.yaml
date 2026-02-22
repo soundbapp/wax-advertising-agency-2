@@ -1,0 +1,25 @@
+# Render Blueprint: backend API for api.waxadvertisingagency.com (free tier)
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Deploy: Render Dashboard → New → Blueprint → connect this repo → Apply.
+# Then add secret env vars in the service (Environment tab): VITE_GEMINI_API_KEY, RESEND_API_KEY.
+
+services:
+  - type: web
+    name: wax-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run start:server
+    healthCheckPath: /health
+    domains:
+      - api.waxadvertisingagency.com
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        value: https://www.waxadvertisingagency.com
+      - key: VITE_GEMINI_API_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false

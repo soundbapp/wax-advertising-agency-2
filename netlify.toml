@@ -1,0 +1,11 @@
+# Netlify config for www.waxadvertisingagency.com (frontend)
+# Set VITE_API_URL in Netlify: Site settings → Environment variables
+
+[build]
+  command = "npm run build:prod"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
