@@ -6,7 +6,7 @@
 import { Resend } from 'resend';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM = process.env.RESEND_FROM || 'WAX Advertising Agency <onboarding@resend.dev>';
+const FROM = process.env.RESEND_FROM || 'WAX Advertising Agency <noreply@waxadvertisingagency.com>';
 const TO = process.env.RESEND_TO || 'abba@waxadvertisingagency.com';
 
 let resendClient = null;

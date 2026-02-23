@@ -218,11 +218,7 @@ The contact form uses [Resend](https://resend.com) for sending emails. To set up
 1. Sign up for a Resend account at https://resend.com
 2. Get your API key from the Resend dashboard
 3. Add it to `.env.local` as `RESEND_API_KEY`
-4. Update the `from` email address in `server/index.js` to use your verified domain (currently uses Resend's default domain)
-
-**Note:** The default `from` address uses `onboarding@resend.dev`. For production, you should:
-- Verify your domain in Resend
-- Update the `from` field in the contact endpoint to use your verified domain
+4. Set `RESEND_FROM` to an address on your verified domain (e.g. `WAX Advertising Agency <noreply@waxadvertisingagency.com>`). The default uses `noreply@waxadvertisingagency.com` so you can send to arbitrary addresses once the domain is verified in Resend.
 
 ## Security Notes
 

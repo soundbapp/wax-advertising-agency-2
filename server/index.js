@@ -173,6 +173,7 @@ app.post('/api/audit', auditRateLimiter, async (req, res) => {
 
 // Contact form endpoint with rate limiting
 app.post('/api/contact', contactRateLimiter, async (req, res) => {
+  console.log('POST /api/contact received');
   try {
     const { name, email, phone, message, planLevel } = req.body;
 
@@ -199,9 +200,7 @@ app.post('/api/contact', contactRateLimiter, async (req, res) => {
     }
 
     if (!isResendConfigured()) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error('Resend API key not configured');
-      }
+      console.error('Resend API key not configured');
       return res.status(500).json({
         error: 'Server configuration error',
         message: 'Email service not configured. Please contact support.'
@@ -212,9 +211,8 @@ app.post('/api/contact', contactRateLimiter, async (req, res) => {
 
     const teamResult = await sendContactToTeam(payload);
     if (teamResult.error) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error('Resend error:', teamResult.error);
-      }
+      // Log in all envs so Render Logs show the reason (no secrets in Resend error payload)
+      console.error('Resend send failed:', typeof teamResult.error === 'object' ? JSON.stringify(teamResult.error) : teamResult.error);
       return res.status(500).json({
         error: 'Email service error',
         message: 'Failed to send email. Please try again later.'
