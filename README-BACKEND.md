@@ -218,7 +218,7 @@ The contact form uses [Resend](https://resend.com) for sending emails. To set up
 1. Sign up for a Resend account at https://resend.com
 2. Get your API key from the Resend dashboard
 3. Add it to `.env.local` as `RESEND_API_KEY`
-4. Set `RESEND_FROM` to an address on your verified domain (e.g. `WAX Advertising Agency <noreply@waxadvertisingagency.com>`). The default uses `noreply@waxadvertisingagency.com` so you can send to arbitrary addresses once the domain is verified in Resend.
+4. Set `RESEND_FROM` to a reply-friendly address on your verified domain (e.g. `WAX Advertising Agency <info@waxadvertisingagency.com>`). Avoid no-reply addresses for better deliverability.
 
 ## Security Notes
 

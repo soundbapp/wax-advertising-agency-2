@@ -6,7 +6,7 @@
 import { Resend } from 'resend';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM = process.env.RESEND_FROM || 'WAX Advertising Agency <noreply@waxadvertisingagency.com>';
+const FROM = process.env.RESEND_FROM || 'WAX Advertising Agency <info@waxadvertisingagency.com>';
 const TO = process.env.RESEND_TO || 'abba@waxadvertisingagency.com';
 
 let resendClient = null;
@@ -62,7 +62,7 @@ export async function sendContactToTeam(payload) {
   const bodyHtml = `
     <h2 style="color: #fafafa; margin-top: 0;">New contact form submission</h2>
     <p><strong style="color: #a1a1aa;">Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong style="color: #a1a1aa;">Email:</strong> <a href="mailto:${escapeHtml(email)}" style="color: #ea580c;">${escapeHtml(email)}</a></p>
+    <p><strong style="color: #a1a1aa;">Email:</strong> <span style="color: #ea580c;">${escapeHtml(email)}</span></p>
     ${phone ? `<p><strong style="color: #a1a1aa;">Phone:</strong> ${escapeHtml(phone)}</p>` : ''}
     ${planLevel ? `<p><strong style="color: #a1a1aa;">Interested plan:</strong> Level ${escapeHtml(planLevel)}</p>` : ''}
     <p><strong style="color: #a1a1aa;">Message:</strong></p>

@@ -46,7 +46,7 @@ The repo includes a **Blueprint** (`render.yaml`) so Render can create the servi
 4. After the service is created, open it → **Environment** tab. You’ll see **VITE_GEMINI_API_KEY** and **RESEND_API_KEY** marked as “not set” (they use `sync: false` so secrets stay in the dashboard). Add:
    - **VITE_GEMINI_API_KEY** = your [Google AI Studio](https://aistudio.google.com/apikey) API key (for the audit).
    - **RESEND_API_KEY** = your [Resend](https://resend.com) API key (for the contact form).
-   - **RESEND_FROM** = `WAX Advertising Agency <noreply@waxadvertisingagency.com>` (use an address on your verified Resend domain so you can send to any recipient).
+   - **RESEND_FROM** = `WAX Advertising Agency <info@waxadvertisingagency.com>` (use a reply-friendly address on your verified domain; avoid no-reply for better deliverability).
    Optionally add **RESEND_TO**, **RESEND_AUTO_REPLY_ENABLED** (see `.env.example`). Save. Render will redeploy.
 5. **Custom domain:** The Blueprint already adds `api.waxadvertisingagency.com`. In the service → **Settings** → **Custom Domains**, Render will show the **CNAME target** (e.g. `wax-api.onrender.com`). At your domain registrar, add a **CNAME** record: **Name** `api`, **Value** that target. After DNS propagates, Render will issue HTTPS for `api.waxadvertisingagency.com`.
 
@@ -54,7 +54,7 @@ The repo includes a **Blueprint** (`render.yaml`) so Render can create the servi
 
 **Contact form not sending?**  
 1. In Render, open **wax-api** → **Logs** (under MONITOR in the left sidebar — not “Events”). Submit the form on the live site, then in Logs look for a line starting with **Resend send failed:**. That line shows Resend’s exact reason (e.g. invalid from, domain not verified, wrong API key).  
-2. In Render → **Environment**, confirm **RESEND_FROM** = `WAX Advertising Agency <noreply@waxadvertisingagency.com>` and **RESEND_API_KEY** is from the same Resend account where you verified waxadvertisingagency.com (e.g. “diasporasportstalk”).  
+2. In Render → **Environment**, confirm **RESEND_FROM** = `WAX Advertising Agency <info@waxadvertisingagency.com>` and **RESEND_API_KEY** is from the same Resend account where you verified waxadvertisingagency.com (e.g. “diasporasportstalk”).  
 3. On Vercel, ensure **VITE_API_URL** is set (e.g. `https://api.waxadvertisingagency.com` or `https://wax-api-04np.onrender.com`) and that the frontend was **rebuilt** after adding it (env vars are baked in at build time).  
 4. In Resend dashboard, open **Logs** (not “Emails”) to see if the API is receiving requests and what status Resend returns.
 
